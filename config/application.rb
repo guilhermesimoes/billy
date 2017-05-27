@@ -14,5 +14,8 @@ module Billy
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Define mailer host.
+    config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
   end
 end
