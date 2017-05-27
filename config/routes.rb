@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :home, only: :index
   resources :categories
+  resources :expenses
 
   root to: 'home#index'
 end

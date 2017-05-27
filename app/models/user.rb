@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :categories
+  has_many :expenses
 
   attribute :currency, :string, default: '€'
 end
