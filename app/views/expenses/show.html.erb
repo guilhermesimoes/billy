@@ -10,5 +10,10 @@
   <%= @expense.description %>
 </p>
 
+<p>
+  <strong>Categories:</strong>
+  <%= @expense.categories.pluck(:name).join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_expense_path(@expense) %> |
 <%= link_to 'Back', expenses_path %>
