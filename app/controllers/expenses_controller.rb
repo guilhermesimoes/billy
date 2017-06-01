@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   # GET /expenses
   def index
-    @expenses = current_user.expenses
+    @expenses = current_user.expenses.order(created_at: :desc)
     @sum_expenses_current_month = current_user.sum_expenses_current_month
   end
 
@@ -52,6 +52,6 @@ class ExpensesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def expense_params
-    params.require(:expense).permit(:user_id, :amount, :description, category_ids: [])
+    params.require(:expense).permit(:user_id, :amount, :created_at, :description, category_ids: [])
   end
 end

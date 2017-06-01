@@ -32,6 +32,11 @@
     %>
   </div>
 
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :created_at, id: :expense_date %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

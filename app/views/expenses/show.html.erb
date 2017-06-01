@@ -15,5 +15,10 @@
   <%= @expense.categories.pluck(:name).join(', ') %>
 </p>
 
+<p>
+  <strong>Date:</strong>
+  <%= l @expense.created_at, format: :short %>
+</p>
+
 <%= link_to 'Edit', edit_expense_path(@expense) %> |
 <%= link_to 'Back', expenses_path %>
