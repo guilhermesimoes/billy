@@ -4,8 +4,10 @@ one:
   user: adam
   amount: 10
   description: Lunch
+  categories: [food]
 
 two:
   user: adam
   amount: 20
   description: Dinner
+  categories: [food]

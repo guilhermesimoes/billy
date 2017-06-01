@@ -4,6 +4,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:adam)
     @expense = expenses(:one)
+    @food_category = categories(:food)
   end
 
   test 'should get index' do
@@ -18,7 +19,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create expense' do
     assert_difference('Expense.count') do
-      post expenses_url, params: { expense: { amount: 10, description: 'Lunch' } }
+      post expenses_url, params: { expense: { amount: 10, description: 'Lunch', category_ids: [@food_category.id] } }
     end
 
     assert_redirected_to expenses_url

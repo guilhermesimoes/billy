@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :expenses
 
   attribute :currency, :string, default: '€'
+
+  validates :currency, presence: true
 end

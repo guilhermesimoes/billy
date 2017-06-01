@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :amount %>
-    <%= form.number_field :amount, id: :expense_amount %>
+    <%= form.number_field :amount, min: 0, step: 'any', id: :expense_amount %>
     <%= current_user.currency %>
   </div>
 
