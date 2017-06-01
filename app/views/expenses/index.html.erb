@@ -2,6 +2,8 @@
 
 <h1>Expenses</h1>
 
+<h2>This month: <%= number_to_currency(@sum_expenses_current_month, unit: current_user.currency) %></h2>
+
 <table>
   <thead>
     <tr>

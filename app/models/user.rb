@@ -10,4 +10,8 @@ class User < ApplicationRecord
   attribute :currency, :string, default: '€'
 
   validates :currency, presence: true
+
+  def sum_expenses_current_month
+    expenses.where('created_at >= ?', DateTime.now.beginning_of_month).sum(:amount)
+  end
 end

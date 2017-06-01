@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   def index
     @expenses = current_user.expenses
+    @sum_expenses_current_month = current_user.sum_expenses_current_month
   end
 
   # GET /expenses/1
