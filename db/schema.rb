@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528211240) do
+ActiveRecord::Schema.define(version: 20170618171735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20170528211240) do
     t.index ["expense_id", "category_id"], name: "index_categories_expenses_on_expense_id_and_category_id", unique: true
   end
 
+  create_table "categories_smart_expenses", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "smart_expense_id", null: false
+    t.index ["smart_expense_id", "category_id"], name: "index_categories_smart_expenses", unique: true
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.money "amount", scale: 2, null: false
@@ -36,6 +42,14 @@ ActiveRecord::Schema.define(version: 20170528211240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "smart_expenses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.money "amount", scale: 2
+    t.text "description"
+    t.string "expression", null: false
+    t.index ["user_id"], name: "index_smart_expenses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +73,5 @@ ActiveRecord::Schema.define(version: 20170528211240) do
 
   add_foreign_key "categories", "users"
   add_foreign_key "expenses", "users"
+  add_foreign_key "smart_expenses", "users"
 end

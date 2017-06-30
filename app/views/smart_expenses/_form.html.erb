@@ -1,0 +1,60 @@
+<%= form_with(model: smart_expense, local: true, class: 'form') do |form| %>
+  <div class='form__field'>
+    <%= form.label :expression %>
+    <%= form.text_field :expression, id: :smart_expense_expression, class: 'input' %>
+    <% if smart_expense.errors.include?(:expression) %>
+      <ul class='field-inline-errors'>
+        <% smart_expense.errors.full_messages_for(:expression).each do |message| %>
+          <li class='field-inline-error'><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class='form__field form__field--currency'>
+    <%= form.label :amount %>
+    <span>
+      <%= form.number_field :amount, min: 0, step: 'any', id: :smart_expense_amount, class: 'input' %>
+      <%= current_user.currency %>
+    </span>
+    <% if smart_expense.errors.include?(:amount) %>
+      <ul class='field-inline-errors'>
+        <% smart_expense.errors.full_messages_for(:amount).each do |message| %>
+          <li class='field-inline-error'><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class='form__field'>
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :smart_expense_description, class: 'h-fixed-textarea' %>
+    <% if smart_expense.errors.include?(:description) %>
+      <ul class='field-inline-errors'>
+        <% smart_expense.errors.full_messages_for(:description).each do |message| %>
+          <li class='field-inline-error'><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class='form__field'>
+    <%= form.label :categories %>
+    <%= form.collection_select :category_ids, current_user.categories, :id, :name, {},
+      {
+        multiple: true,
+        id: :expense_categories,
+        class: 'h-fixed-select'
+      }
+    %>
+    <% if smart_expense.errors.include?(:category_ids) %>
+      <ul class='field-inline-errors'>
+        <li class='field-inline-error'><%= smart_expense.errors.generate_message(:category_ids, :blank) %></li>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

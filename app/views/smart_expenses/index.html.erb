@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Smart Expenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @smart_expenses.each do |smart_expense| %>
+      <tr>
+        <td><%= smart_expense.expression %></td>
+        <td><%= number_to_currency(smart_expense.amount, unit: current_user.currency) %></td>
+        <td><%= smart_expense.description %></td>
+        <td><%= link_to 'Show', smart_expense %></td>
+        <td><%= link_to 'Edit', edit_smart_expense_path(smart_expense) %></td>
+        <td><%= link_to 'Destroy', smart_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Smart Expense', new_smart_expense_path %>

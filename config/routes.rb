@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :expenses
+  resources :smart_expenses
 
   authenticated do
     root to: 'pages#home'

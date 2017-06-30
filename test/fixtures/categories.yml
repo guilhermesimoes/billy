@@ -7,3 +7,7 @@ food:
 transportation:
   user: adam
   name: Transportation
+
+train:
+  user: adam
+  name: Train

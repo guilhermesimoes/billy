@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: adam
+  amount: 15
+  description: Comboio Coimbra-Lisboa
+  categories: [train, transportation]
+  expression: comboio cbr->lx

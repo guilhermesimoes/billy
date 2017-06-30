@@ -51,3 +51,7 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= javascript_tag do %>
+  window.smart_expenses = <%= @smart_expenses.to_json.html_safe %>;
+<% end %>

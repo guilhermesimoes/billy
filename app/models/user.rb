@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :categories
   has_many :expenses
+  has_many :smart_expenses
 
   attribute :currency, :string, default: '€'
 

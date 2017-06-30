@@ -14,6 +14,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
+    @smart_expenses = current_user.smart_expenses
   end
 
   # GET /expenses/1/edit

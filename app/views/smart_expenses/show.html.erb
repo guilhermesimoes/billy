@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expression:</strong>
+  <%= @smart_expense.expression %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= number_to_currency(@smart_expense.amount, unit: current_user.currency) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @smart_expense.description %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @smart_expense.categories.pluck(:name).join(', ') %>
+</p>
+
+<%= link_to 'Edit', edit_smart_expense_path(@smart_expense) %> |
+<%= link_to 'Back', smart_expenses_path %>
