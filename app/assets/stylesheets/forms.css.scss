@@ -1,0 +1,49 @@
+.form__field {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.form__field > label {
+  width: 25%;
+}
+
+.form__field > :not(label) {
+  width: 75%;
+}
+
+.form__field > .field-inline-errors {
+  width: 100%;
+}
+
+.form__field--currency input {
+  width: 94%;
+}
+
+.form__field--date > select {
+ width: 25%;
+}
+
+.field-inline-errors {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+  color: #FF4136;
+  font-size: smaller;
+  font-style: italic;
+}
+
+input.field_with_errors,
+textarea.field_with_errors,
+select.field_with_errors {
+  border: 1px #FF4136 solid;
+}
+
+.h-fixed-select, .h-fixed-textarea {
+  resize: vertical;
+}
+
+.input {
+  border: 1px solid #999999;
+  padding: 3px;
+}

@@ -1,43 +1,53 @@
-<%= form_with(model: expense, local: true) do |form| %>
-  <% if expense.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
-
-      <ul>
-      <% expense.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= form_with(model: expense, local: true, class: 'form') do |form| %>
+  <div class='form__field form__field--currency'>
     <%= form.label :amount %>
-    <%= form.number_field :amount, min: 0, step: 'any', id: :expense_amount %>
-    <%= current_user.currency %>
+    <span>
+      <%= form.number_field :amount, min: 0, step: 'any', id: :expense_amount, class: 'input' %>
+      <%= current_user.currency %>
+    </span>
+    <% if expense.errors.include?(:amount) %>
+      <ul class='field-inline-errors'>
+        <% expense.errors.full_messages_for(:amount).each do |message| %>
+          <li class='field-inline-error'><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
-  <div class="field">
+  <div class='form__field'>
     <%= form.label :description %>
-    <%= form.text_area :description, id: :expense_description %>
+    <%= form.text_area :description, id: :expense_description, class: 'h-fixed-textarea' %>
+    <% if expense.errors.include?(:description) %>
+      <ul class='field-inline-errors'>
+        <% expense.errors.full_messages_for(:description).each do |message| %>
+          <li class='field-inline-error'><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
-  <div class="field">
+  <div class='form__field'>
     <%= form.label :categories %>
     <%= form.collection_select :category_ids, current_user.categories, :id, :name, {},
       {
         multiple: true,
-        id: :expense_categories
+        id: :expense_categories,
+        class: 'h-fixed-select'
       }
     %>
+    <% if expense.errors.include?(:category_ids) %>
+      <ul class='field-inline-errors'>
+        <li class='field-inline-error'><%= expense.errors.generate_message(:category_ids, :blank) %></li>
+      </ul>
+    <% end %>
   </div>
 
-  <div class="field">
+  <div class='form__field form__field--date'>
     <%= form.label :date %>
     <%= form.date_select :created_at, id: :expense_date %>
   </div>
 
-  <div class="actions">
+  <div class='form__actions'>
     <%= form.submit %>
   </div>
 <% end %>

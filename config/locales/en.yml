@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      expense:
+        category_ids: Categories
+
+    errors:
+      models:
+        expense:
+          attributes:
+            category_ids:
+              blank: Select at least one category
