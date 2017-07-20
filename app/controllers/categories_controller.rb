@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /categories
   def index
     @categories = current_user.categories

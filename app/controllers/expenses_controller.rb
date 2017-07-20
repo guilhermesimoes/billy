@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /expenses
   def index
     @expenses = current_user.expenses.order(created_at: :desc)
