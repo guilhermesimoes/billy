@@ -20,9 +20,9 @@
         <td><%= l expense.created_at, format: :short %></td>
         <td><%= number_to_currency(expense.amount, unit: current_user.currency) %></td>
         <td><%= expense.description %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '👀', expense, class: 'emoji-link' %></td>
+        <td><%= link_to '✏️', edit_expense_path(expense), class: 'emoji-link' %></td>
+        <td><%= link_to '💣', expense, method: :delete, data: { confirm: 'Are you sure?' }, class: 'emoji-link' %></td>
       </tr>
     <% end %>
   </tbody>
