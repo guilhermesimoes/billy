@@ -2,11 +2,11 @@
 
 <h1>Categories</h1>
 
-<table>
+<table class='actionable-table'>
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th class='actionable-table-actions'></th>
     </tr>
   </thead>
 
@@ -14,9 +14,11 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to '👀', category, class: 'emoji-link' %></td>
-        <td><%= link_to '✏️', edit_category_path(category), class: 'emoji-link' %></td>
-        <td><%= link_to '💣', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'emoji-link' %></td>
+        <td class='actionable-table-actions'>
+          <%= link_to '👀', category, class: 'emoji-link' %>
+          <%= link_to '✏️', edit_category_path(category), class: 'emoji-link' %>
+          <%= link_to '💣', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'emoji-link' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

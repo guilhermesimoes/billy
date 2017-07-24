@@ -1,0 +1,13 @@
+.actionable-table {
+  table-layout: fixed;
+  width: 100%;
+
+  thead {
+    text-align: left;
+  }
+
+  &-actions {
+    width: 4.5em;
+    text-align: right;
+  }
+}
