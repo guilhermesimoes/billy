@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'login' => 'devise/sessions#new', as: :new_user_session
     post 'login' => 'devise/sessions#create', as: :user_session
-    delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
+    match 'logout' => 'devise/sessions#destroy', as: :destroy_user_session, via: [:get, :delete]
 
     get 'account-recovery' => 'devise/passwords#new', as: :new_user_password
     post 'account-recovery' => 'devise/passwords#create', as: :user_password
