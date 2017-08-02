@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :currency, presence: true
 
-  def sum_expenses_current_month
-    expenses.where('created_at >= ?', DateTime.now.beginning_of_month).sum(:amount)
+  def current_month_expenses
+    expenses.where('created_at >= ?', DateTime.now.beginning_of_month)
   end
 end

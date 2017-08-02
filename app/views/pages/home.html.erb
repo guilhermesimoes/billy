@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Month expenses</h1>
+
+<h2>Total Amount: <%= number_to_currency(@sum_expenses_current_month, unit: current_user.currency) %></h2>
+
+<%= render 'expenses/expenses_table', expenses: @expenses %>
+
+<br>
+
+<%= link_to 'New Expense', new_expense_path %>
