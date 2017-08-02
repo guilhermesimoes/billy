@@ -25,9 +25,12 @@ Rails.application.routes.draw do
     delete 'delete-account' => 'devise/registrations#destroy', as: :destroy_user_registration
   end
 
-  resources :home, only: :index
   resources :categories
   resources :expenses
 
-  root to: 'home#index'
+  authenticated do
+    root to: 'pages#home'
+  end
+
+  root to: 'pages#landing'
 end
