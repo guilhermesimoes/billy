@@ -1,14 +1,8 @@
-<%= form_with(model: smart_expense, local: true, class: 'form') do |form| %>
+<%= form_with(model: smart_expense, local: true, builder: InlineErrorsFormBuilder, class: 'form') do |form| %>
   <div class='form__field'>
     <%= form.label :expression %>
     <%= form.text_field :expression, id: :smart_expense_expression, class: 'input' %>
-    <% if smart_expense.errors.include?(:expression) %>
-      <ul class='field-inline-errors'>
-        <% smart_expense.errors.full_messages_for(:expression).each do |message| %>
-          <li class='field-inline-error'><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= form.inline_errors :expression %>
   </div>
 
   <div class='form__field form__field--currency'>
@@ -17,25 +11,13 @@
       <%= form.number_field :amount, min: 0, step: 'any', id: :smart_expense_amount, class: 'input' %>
       <%= current_user.currency %>
     </span>
-    <% if smart_expense.errors.include?(:amount) %>
-      <ul class='field-inline-errors'>
-        <% smart_expense.errors.full_messages_for(:amount).each do |message| %>
-          <li class='field-inline-error'><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= form.inline_errors :amount %>
   </div>
 
   <div class='form__field'>
     <%= form.label :description %>
     <%= form.text_area :description, id: :smart_expense_description, class: 'h-fixed-textarea' %>
-    <% if smart_expense.errors.include?(:description) %>
-      <ul class='field-inline-errors'>
-        <% smart_expense.errors.full_messages_for(:description).each do |message| %>
-          <li class='field-inline-error'><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= form.inline_errors :description %>
   </div>
 
   <div class='form__field'>
@@ -47,11 +29,7 @@
         class: 'h-fixed-select'
       }
     %>
-    <% if smart_expense.errors.include?(:category_ids) %>
-      <ul class='field-inline-errors'>
-        <li class='field-inline-error'><%= smart_expense.errors.generate_message(:category_ids, :blank) %></li>
-      </ul>
-    <% end %>
+    <%= form.inline_errors :categories %>
   </div>
 
   <div class="actions">

@@ -1,14 +1,8 @@
-<%= form_with(model: category, local: true, class: 'form') do |form| %>
+<%= form_with(model: category, local: true, builder: InlineErrorsFormBuilder, class: 'form') do |form| %>
   <div class='form__field'>
     <%= form.label :name %>
     <%= form.text_field :name, id: :category_name, class: 'input' %>
-    <% if category.errors.include?(:name) %>
-      <ul class='field-inline-errors'>
-        <% category.errors.full_messages_for(:name).each do |message| %>
-          <li class='field-inline-error'><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= form.inline_errors :name %>
   </div>
 
   <div class='form__actions'>
