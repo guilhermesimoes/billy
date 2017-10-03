@@ -1,7 +1,7 @@
 <%= form_with(model: smart_expense, local: true, builder: InlineErrorsFormBuilder, class: 'form') do |form| %>
   <div class='form__field'>
     <%= form.label :expression %>
-    <%= form.text_field :expression, id: :smart_expense_expression, class: 'input' %>
+    <%= form.text_field :expression, id: :smart_expense_expression, class: 'input', required: true %>
     <%= form.inline_errors :expression %>
   </div>
 

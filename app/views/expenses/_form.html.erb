@@ -2,7 +2,7 @@
   <div class='form__field form__field--currency'>
     <%= form.label :amount %>
     <span>
-      <%= form.number_field :amount, min: 0, step: 'any', id: :expense_amount, class: 'input' %>
+      <%= form.number_field :amount, min: 0, step: 'any', id: :expense_amount, class: 'input', required: true %>
       <%= current_user.currency %>
     </span>
     <%= form.inline_errors :amount %>
@@ -10,7 +10,7 @@
 
   <div class='form__field'>
     <%= form.label :description %>
-    <%= form.text_area :description, id: :expense_description, class: 'h-fixed-textarea' %>
+    <%= form.text_area :description, id: :expense_description, class: 'h-fixed-textarea', required: true %>
     <%= form.inline_errors :description %>
   </div>
 
@@ -20,7 +20,8 @@
       {
         multiple: true,
         id: :expense_categories,
-        class: 'h-fixed-select'
+        class: 'h-fixed-select',
+        required: true
       }
     %>
     <%= form.inline_errors_categories %>
